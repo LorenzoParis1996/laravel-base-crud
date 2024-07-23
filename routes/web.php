@@ -14,5 +14,7 @@ use App\Http\Controllers\AnimalController;
 |
 */
 
-Route::get('/', [AnimalController::class, 'index']);
-Route::get('/show/{animal}', [AnimalController::class, 'show']);
+Route::get('/', [AnimalController::class, 'index'])->name('pages.index');
+Route::post('/', [AnimalController::class, 'store'])->name('pages.store');
+Route::get('/create', [AnimalController::class, 'create'])->name('pages.create');
+Route::get('/show/{animal}', [AnimalController::class, 'show'])->name('pages.show');

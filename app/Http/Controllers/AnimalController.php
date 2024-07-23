@@ -21,7 +21,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -29,7 +29,17 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $NewAnimal= new Animal($data);
+        //$NewAnimal-> nome = $data['nome'];
+        //$NewAnimal-> nome_specie = $data['nome_specie'];
+        //$NewAnimal-> eta = $data['eta'];
+        //$NewAnimal-> sesso = $data['sesso'];
+        //$NewAnimal-> habitat = $data['habitat'];
+        $NewAnimal-> save();
+
+        return redirect()->route('pages.show', $NewAnimal);
     }
 
     /**
