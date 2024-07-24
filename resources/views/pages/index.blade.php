@@ -24,7 +24,9 @@
             <td>{{$animal->eta}}</td>
             <td>{{$animal->sesso}}</td>
             <td>{{$animal->habitat}}</td>
-            <th><a class="btn btn-primary btn-sm" href="/show/{{$animal->id}}">View</a></th>
+            <td><a class="btn btn-primary btn-sm" href="/show/{{$animal->id}}">View</a>
+                <a class="btn btn-info btn-sm" href="/show/{{$animal->id}}/edit">Edit</a>
+            </td>
           </tr>
 
           @endforeach

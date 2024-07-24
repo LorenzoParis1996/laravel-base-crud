@@ -18,3 +18,5 @@ Route::get('/', [AnimalController::class, 'index'])->name('pages.index');
 Route::post('/', [AnimalController::class, 'store'])->name('pages.store');
 Route::get('/create', [AnimalController::class, 'create'])->name('pages.create');
 Route::get('/show/{animal}', [AnimalController::class, 'show'])->name('pages.show');
+Route::get('show/{animal}/edit', [AnimalController::class, 'edit'])->name('pages.edit');
+Route::put('/show/{animal}', [AnimalController::class, 'update'])->name('pages.update');

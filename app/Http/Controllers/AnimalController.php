@@ -54,17 +54,26 @@ class AnimalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Animal $animal)
     {
-        //
+        return view('pages.edit', compact('animal'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Animal $animal)
     {
-        //
+        $data = $request->all();
+
+        $animal-> nome = $data['nome'];
+        $animal-> nome_specie = $data['nome_specie'];
+        $animal-> eta = $data['eta'];
+        $animal-> sesso = $data['sesso'];
+        $animal-> habitat = $data['habitat'];
+        $animal-> update();
+
+        return redirect()->route('pages.show', $animal);
     }
 
     /**
