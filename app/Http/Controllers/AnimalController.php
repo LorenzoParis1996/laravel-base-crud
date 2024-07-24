@@ -31,12 +31,13 @@ class AnimalController extends Controller
     {
         $data = $request->all();
 
-        $NewAnimal= new Animal($data);
-        //$NewAnimal-> nome = $data['nome'];
-        //$NewAnimal-> nome_specie = $data['nome_specie'];
-        //$NewAnimal-> eta = $data['eta'];
-        //$NewAnimal-> sesso = $data['sesso'];
-        //$NewAnimal-> habitat = $data['habitat'];
+        //$NewAnimal= new Animal($data); //con le fillable, e commenti i dati o non li metti (i dati singoli)
+        $NewAnimal = new Animal(); // senza le fillable, e metti anche i dati singoli
+        $NewAnimal-> nome = $data['nome'];
+        $NewAnimal-> nome_specie = $data['nome_specie'];
+        $NewAnimal-> eta = $data['eta'];
+        $NewAnimal-> sesso = $data['sesso'];
+        $NewAnimal-> habitat = $data['habitat'];
         $NewAnimal-> save();
 
         return redirect()->route('pages.show', $NewAnimal);
