@@ -24,8 +24,13 @@
             <td>{{$animal->eta}}</td>
             <td>{{$animal->sesso}}</td>
             <td>{{$animal->habitat}}</td>
-            <td><a class="btn btn-primary btn-sm" href="/show/{{$animal->id}}">View</a>
-                <a class="btn btn-info btn-sm" href="/show/{{$animal->id}}/edit">Edit</a>
+            <td><a class="btn btn-primary btn-sm" href="{{route('pages.show',$animal)}}">View</a>
+                <a class="btn btn-info btn-sm" href="{{route('pages.edit', $animal)}}">Edit</a>
+                <form action="{{route('pages.destroy', $animal)}}" class="d-inline-block" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
             </td>
           </tr>
 
