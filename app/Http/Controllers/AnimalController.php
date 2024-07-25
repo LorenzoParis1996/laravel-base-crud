@@ -29,15 +29,21 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'nome'=>'required|unique:animals|max:20|min:3',
+            'nome_specie'=>'required|unique:animals|max:30|min:4',
+            'eta'=>'required|integer|min:1|max:50',
+            'sesso'=>'required|unique:animals|max:1',
+            'habitat'=>'required|unique:animals|max:30|min:4'
+        ]);
 
-        //$NewAnimal= new Animal($data); //con le fillable, e commenti i dati o non li metti (i dati singoli)
-        $NewAnimal = new Animal(); // senza le fillable, e metti anche i dati singoli
-        $NewAnimal-> nome = $data['nome'];
-        $NewAnimal-> nome_specie = $data['nome_specie'];
-        $NewAnimal-> eta = $data['eta'];
-        $NewAnimal-> sesso = $data['sesso'];
-        $NewAnimal-> habitat = $data['habitat'];
+        $NewAnimal= new Animal($data); //con le fillable, e commenti i dati o non li metti (i dati singoli)
+        //$NewAnimal = new Animal(); // senza le fillable, e metti anche i dati singoli
+        //$NewAnimal-> nome = $data['nome'];
+        //$NewAnimal-> nome_specie = $data['nome_specie'];
+        //$NewAnimal-> eta = $data['eta'];
+        //$NewAnimal-> sesso = $data['sesso'];
+        //$NewAnimal-> habitat = $data['habitat'];
         $NewAnimal-> save();
 
         return redirect()->route('pages.show', $NewAnimal);
