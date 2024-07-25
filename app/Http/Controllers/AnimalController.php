@@ -70,14 +70,20 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'nome'=>'required|max:20|min:3',
+            'nome_specie'=>'required|max:30|min:4',
+            'eta'=>'required|integer|min:1|max:50',
+            'sesso'=>'required|max:1',
+            'habitat'=>'required|max:30|min:4'
+        ]);
 
-        $animal-> nome = $data['nome'];
-        $animal-> nome_specie = $data['nome_specie'];
-        $animal-> eta = $data['eta'];
-        $animal-> sesso = $data['sesso'];
-        $animal-> habitat = $data['habitat'];
-        $animal-> update();
+        //$animal-> nome = $data['nome'];
+        //$animal-> nome_specie = $data['nome_specie'];
+        //$animal-> eta = $data['eta'];
+        //$animal-> sesso = $data['sesso'];
+        //$animal-> habitat = $data['habitat'];
+        $animal-> update($data);
 
         return redirect()->route('pages.show', $animal);
     }
